@@ -1,0 +1,6 @@
+{
+  "name": "secsi-py",
+  "version": "1.0.0",
+  "description": "Python-compiler",
+  "main": "index.js"
+}
