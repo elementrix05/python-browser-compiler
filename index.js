@@ -13,7 +13,7 @@ const codemirrorEditor = CodeMirror.fromTextArea(
 );
 
 //Default value in code editor
-codemirrorEditor.setValue(`print("This is an online Python compiler and interpreter")\nprint("It's Simple and Secure...SecSi(Sexy)\\U0001F605")\nprint("Made with \u2764\uFE0F by Niraj Wadile")`)
+codemirrorEditor.setValue(`print("This is an online Python compiler and interpreter")\nprint("Made with \u2764\uFE0F by Niraj Wadile")`)
 
 function makeOut(s){
 	console.log(s);
@@ -78,7 +78,7 @@ function setup_pyodide(startcode) {
 languagePluginLoader.then(() => {
 	// Pyodide is now ready to use...
 	setup_pyodide(startcode)
-	pyodide.globals.code_to_run = `print("This is an online Python compiler and interpreter")\nprint("It's Simple and Secure...SecSi(Sexy)\\U0001F605")\nprint("Made with \u2764\uFE0F by Niraj Wadile")`;
+	pyodide.globals.code_to_run = `print("This is an online Python compiler and interpreter")\nprint("Made with \u2764\uFE0F by Niraj Wadile")`;
 	makeOut(pyodide.runPython(`run_code(code_to_run)`));
   });
 
