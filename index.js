@@ -46,8 +46,17 @@ def run_code(code):
     try:
         # change next line to exec(code, {}) if you want to clear vars each time
         exec(code, {})
-    except:
-        traceback.print_exc()
+    except Exception as e:
+        # Use traceback.format_exception to capture traceback
+        formatted_exception = traceback.format_exception(None, e, e.__traceback__)
+        
+        # Remove "File" and "Traceback" related lines and join the rest
+        filtered_traceback = []
+        for line in formatted_exception:
+            if not line.startswith("  File"):
+                filtered_traceback.append(line)
+        
+        out.write(''.join(filtered_traceback))
 
     sys.stdout = oldout
     sys.stderr = olderr
@@ -61,10 +70,19 @@ def compile_code(code):
     sys.stdout = sys.stderr = out
     try:
         # change next line to exec(code, {}) if you want to clear vars each time
-        x = compile(code,'test','exec')
-        print("Synatax is Okay!")
-    except:
-        traceback.print_exc()
+        x = compile(code, 'test', 'exec')
+        print("Syntax is Okay!")
+    except Exception as e:
+        # Use traceback.format_exception to capture traceback
+        formatted_exception = traceback.format_exception(None, e, e.__traceback__)
+        
+        # Remove "File" and "Traceback" related lines and join the rest
+        filtered_traceback = []
+        for line in formatted_exception:
+            if not line.startswith("  File"):
+                filtered_traceback.append(line)
+        
+        out.write(''.join(filtered_traceback))
 
     sys.stdout = oldout
     sys.stderr = olderr
